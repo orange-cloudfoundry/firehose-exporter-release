@@ -1,0 +1,17 @@
+name: firehose-exporter
+version: 6.3.0
+commit_hash: 53fde42
+uncommitted_changes: false
+jobs:
+- name: firehose_exporter
+  version: 8dafc3e541b2fe19eb9fa81bb1f87735bb42b7d236d1caf68ec734592f1d7f56
+  fingerprint: 8dafc3e541b2fe19eb9fa81bb1f87735bb42b7d236d1caf68ec734592f1d7f56
+  sha1: sha256:061015f03e49184457bc544e11b225ca527d32f3bfcec7879f289e50ff717f80
+  packages:
+  - firehose_exporter
+packages:
+- name: firehose_exporter
+  version: 6d4df2f7bbd04b8ce7105ddb59a1fe830659282d66dce615bb079a1d662cfc16
+  fingerprint: 6d4df2f7bbd04b8ce7105ddb59a1fe830659282d66dce615bb079a1d662cfc16
+  sha1: sha256:4aa740b76c77bae2620826352ea565280539ea6df1ccb4c89dfa0b7a839e19f7
+  dependencies: []
