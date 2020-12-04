@@ -1,0 +1,6 @@
+---
+name: firehose_exporter
+
+files:
+  - common/utils.sh
+  - firehose_exporter/firehose_exporter-6.3.0-ora.linux-amd64.tar.gz
