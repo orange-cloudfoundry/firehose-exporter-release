@@ -1,4 +1,4 @@
-firehose_exporter/firehose_exporter-6.3.0-ora.linux-amd64.tar.gz:
-  size: 9171827
-  object_id: 83261eff-17d4-42f9-4341-652d45aab954
-  sha: sha256:a7ecc608b5ece09c6988ecce4e10d1ab7cbf7fdc4a289d9d23e17d0996777d7a
+firehose_exporter/firehose_exporter-7.0.0.linux-amd64.tar.gz:
+  size: 8005419
+  object_id: 8801a703-837a-4534-40dd-7cf15453f907
+  sha: sha256:ba5c50559e6dd4f7e3ae1029b61176fc60c76472a25f68948543301298f81ca1
