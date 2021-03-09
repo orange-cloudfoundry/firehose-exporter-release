@@ -1,4 +1,4 @@
-firehose_exporter/firehose_exporter-7.0.0.linux-amd64.tar.gz:
-  size: 8005419
-  object_id: 8801a703-837a-4534-40dd-7cf15453f907
-  sha: sha256:ba5c50559e6dd4f7e3ae1029b61176fc60c76472a25f68948543301298f81ca1
+firehose_exporter/firehose_exporter-7.0.1.linux-amd64.tar.gz:
+  size: 8000726
+  object_id: 4573188d-34e5-472f-7d37-919bed192896
+  sha: sha256:b92077481bf1d70d3df6f3d1f98962948e12d954fa97ee2515d1db67b310f87a
