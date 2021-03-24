@@ -1,12 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/bash -e
 
-set -eux
+ostype=$(uname  | tr '[:upper:]' '[:lower:]')
+bin_name="firehose_exporter"
+tar_name="${bin_name}_${ostype}.tar.gz"
+
+mkdir -p ${BOSH_INSTALL_TARGET}/bin
+tar zxf ${tar_name} --strip 1 -C ${BOSH_INSTALL_TARGET}
+mv ${BOSH_INSTALL_TARGET}/${bin_name} ${BOSH_INSTALL_TARGET}/bin
 
 # Copy common utils
 mkdir -p ${BOSH_INSTALL_TARGET}/common
-cp -a ${BOSH_COMPILE_TARGET}/common/* ${BOSH_INSTALL_TARGET}/common
-
-# Extract firehose_exporter package
-mkdir -p ${BOSH_INSTALL_TARGET}/bin
-tar xzvf ${BOSH_COMPILE_TARGET}/firehose_exporter/firehose_exporter-7.0.1.linux-amd64.tar.gz
-cp -a ${BOSH_COMPILE_TARGET}/firehose_exporter-7.0.1.linux-amd64/* ${BOSH_INSTALL_TARGET}/bin
+cp -a common/* ${BOSH_INSTALL_TARGET}/common
