@@ -1,0 +1,22 @@
+name: firehose-exporter
+version: 7.0.6
+commit_hash: 9d2a20d
+uncommitted_changes: false
+jobs:
+- name: cloudfoundry_dashboards
+  version: 3da46c1aa8979e80dda8f7cfd741e506531918c26987c79b93c68de94be0ae8c
+  fingerprint: 3da46c1aa8979e80dda8f7cfd741e506531918c26987c79b93c68de94be0ae8c
+  sha1: sha256:d6c8815434e2b9fbfb3ca5907c9aa2e8e1591e30696ecf8150d5998cf013200a
+  packages: []
+- name: firehose_exporter
+  version: cc381fc3eb4740d7352cdd446b5b4c5fba8cef32644dc33b406e96b48669a88d
+  fingerprint: cc381fc3eb4740d7352cdd446b5b4c5fba8cef32644dc33b406e96b48669a88d
+  sha1: sha256:4945c9bc01642648ea3c6ad030b61c6199ebf167ede44ea472165a7139f2cc37
+  packages:
+  - firehose_exporter
+packages:
+- name: firehose_exporter
+  version: b7da159b7c53f8a4abf112d445941a572ebef02989a2ffdad335751e38d57d36
+  fingerprint: b7da159b7c53f8a4abf112d445941a572ebef02989a2ffdad335751e38d57d36
+  sha1: sha256:234e78ead71c08f9dc646e2877ff1471b5aefed4b8d792f3923640fce8e4aee2
+  dependencies: []
