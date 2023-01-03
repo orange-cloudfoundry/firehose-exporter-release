@@ -25,4 +25,6 @@ builds:
     version: 6.3.0
   c5022b3d-3457-4c46-76e8-b907cc67558a:
     version: 7.0.2
+  e1c0ac70-0b02-4151-5b51-a69ff46eb64d:
+    version: 7.2.1
 format-version: "2"
