@@ -74,6 +74,18 @@
       "targetBlank": false,
       "title": "Apps",
       "type": "dashboards"
+    },
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "v2"
+      ],
+      "targetBlank": true,
+      "title": "v2 Dashboards",
+      "type": "dashboards"
     }
   ],
   "liveNow": false,
@@ -133,10 +145,12 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
+          "editorMode": "code",
           "expr": "avg(rate(firehose_http_duration_seconds_sum{environment=~\"$environment\",bosh_deployment=~\"$bosh_deployment\",application_id=~\"$cf_application_id\"}[5m]) / rate(firehose_http_duration_seconds_count{environment=~\"$environment\",bosh_deployment=~\"$bosh_deployment\",application_id=~\"$cf_application_id\"}[5m]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Client",
+          "range": true,
           "refId": "A",
           "step": 2
         }
@@ -159,12 +173,14 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1649",
           "format": "s",
           "logBase": 1,
           "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:1650",
           "format": "short",
           "logBase": 1,
           "show": false
@@ -193,7 +209,7 @@
         "y": 5
       },
       "hiddenSeries": false,
-      "id": 5,
+      "id": 7,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -412,7 +428,7 @@
       "heatmap": {},
       "hideZeroBuckets": false,
       "highlightCards": true,
-      "id": 8,
+      "id": 9,
       "legend": {
         "show": false
       },
@@ -459,10 +475,12 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
+          "editorMode": "code",
           "expr": "sum(rate(firehose_http_duration_seconds_bucket{environment=~\"$environment\",bosh_deployment=~\"$bosh_deployment\",application_id=~\"$cf_application_id\"}[10m])) by (le)",
           "format": "heatmap",
           "interval": "",
           "legendFormat": "{{le}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -508,7 +526,7 @@
         "y": 18
       },
       "hiddenSeries": false,
-      "id": 9,
+      "id": 11,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -694,7 +712,8 @@
   "schemaVersion": 37,
   "style": "dark",
   "tags": [
-    "apps"
+    "apps",
+    "v2"
   ],
   "templating": {
     "list": [
@@ -704,7 +723,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "",
+        "definition": "label_values(cf_application_info, environment)",
         "hide": 0,
         "includeAll": false,
         "label": "Environment",
@@ -730,7 +749,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "",
+        "definition": "label_values(cf_application_info{environment=~\"$environment\"}, deployment)",
         "hide": 0,
         "includeAll": false,
         "label": "Deployment",
@@ -756,7 +775,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "",
+        "definition": "label_values(cf_application_info{environment=~\"$environment\",deployment=~\"${bosh_deployment}[-0-9a-f]*\"}, organization_name)",
         "hide": 0,
         "includeAll": false,
         "label": "Organization",
@@ -764,7 +783,7 @@
         "name": "cf_organization_name",
         "options": [],
         "query": {
-          "query": "label_values(cf_application_info{environment=~\"$environment\",deployment=~\"$bosh_deployment\"}, organization_name)",
+          "query": "label_values(cf_application_info{environment=~\"$environment\",deployment=~\"${bosh_deployment}[-0-9a-f]*\"}, organization_name)",
           "refId": "prometheus-cf_organization_name-Variable-Query"
         },
         "refresh": 1,
@@ -780,7 +799,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "",
+        "definition": "label_values(cf_application_info{environment=~\"$environment\",deployment=~\"${bosh_deployment}[-0-9a-f]*\",organization_name=~\"$cf_organization_name\"}, space_name)",
         "hide": 0,
         "includeAll": false,
         "label": "Space",
@@ -788,7 +807,7 @@
         "name": "cf_space_name",
         "options": [],
         "query": {
-          "query": "label_values(cf_application_info{environment=~\"$environment\",deployment=~\"$bosh_deployment\",organization_name=~\"$cf_organization_name\"}, space_name)",
+          "query": "label_values(cf_application_info{environment=~\"$environment\",deployment=~\"${bosh_deployment}[-0-9a-f]*\",organization_name=~\"$cf_organization_name\"}, space_name)",
           "refId": "prometheus-cf_space_name-Variable-Query"
         },
         "refresh": 1,
@@ -804,7 +823,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "",
+        "definition": "label_values(cf_application_info{environment=~\"$environment\",deployment=~\"${bosh_deployment}[-0-9a-f]*\",organization_name=~\"$cf_organization_name\", space_name=~\"$cf_space_name\"}, application_name)",
         "hide": 0,
         "includeAll": false,
         "label": "Application",
@@ -812,7 +831,7 @@
         "name": "cf_application_name",
         "options": [],
         "query": {
-          "query": "label_values(cf_application_info{environment=~\"$environment\",deployment=~\"$bosh_deployment\",organization_name=~\"$cf_organization_name\", space_name=~\"$cf_space_name\"}, application_name)",
+          "query": "label_values(cf_application_info{environment=~\"$environment\",deployment=~\"${bosh_deployment}[-0-9a-f]*\",organization_name=~\"$cf_organization_name\", space_name=~\"$cf_space_name\"}, application_name)",
           "refId": "prometheus-cf_application_name-Variable-Query"
         },
         "refresh": 1,
@@ -836,7 +855,7 @@
         "name": "cf_application_id",
         "options": [],
         "query": {
-          "query": "label_values(cf_application_info{environment=~\"$environment\",deployment=~\"$bosh_deployment\",organization_name=~\"$cf_organization_name\", space_name=~\"$cf_space_name\",application_name=~\"$cf_application_name\"}, application_id)",
+          "query": "label_values(cf_application_info{deployment=~\"${bosh_deployment}[-0-9a-f]*\",organization_name=~\"$cf_organization_name\", space_name=~\"$cf_space_name\",application_name=~\"$cf_application_name\"}, application_id)",
           "refId": "prometheus-cf_application_id-Variable-Query"
         },
         "refresh": 1,
@@ -880,8 +899,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "Apps: Latency",
-  "uid": "cf_apps_latency",
-  "version": 4,
+  "title": "Apps: Latency v2",
+  "uid": "cf_apps_latency_v2",
+  "version": 2,
   "weekStart": ""
 }

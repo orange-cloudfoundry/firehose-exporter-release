@@ -46,7 +46,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1631890986385,
+  "iteration": 1631898372080,
   "links": [
     {
       "asDropdown": true,
@@ -88,7 +88,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
-      "description": "Cumulative number of messages received across all of Doppler listeners (UDP, TCP, TLS).",
+      "description": "Number of routes in the route-emitter routing table. Emitted every 30 seconds.",
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -101,19 +101,17 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 5,
-        "w": 12,
+        "w": 24,
         "x": 0,
         "y": 0
       },
       "hiddenSeries": false,
       "id": 3,
       "legend": {
-        "alignAsTable": false,
         "avg": false,
         "current": false,
         "max": false,
         "min": false,
-        "rightSide": false,
         "show": false,
         "total": false,
         "values": false
@@ -136,19 +134,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(avg(firehose_counter_event_loggregator_doppler_ingress_total{environment=~\"$environment\",bosh_deployment=~\"${bosh_deployment}[-0-9a-f]*\"}) by(bosh_deployment, bosh_job_name, bosh_job_ip))",
-          "format": "time_series",
+          "expr": "avg(firehose_value_metric_route_emitter_routes_total{environment=~\"$environment\",bosh_deployment=~\"${bosh_deployment}[-0-9a-f]*\"})",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "Messages",
+          "legendFormat": "Number of Routes",
           "refId": "A",
-          "step": 4
+          "step": 2
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Messages Received by Listeners",
+      "title": "Routing Table",
       "tooltip": {
         "msResolution": false,
         "shared": true,
@@ -166,6 +164,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:111",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -174,6 +173,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:112",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -189,11 +189,11 @@
     },
     {
       "aliasColors": {},
-      "bars": false,
+      "bars": true,
       "dashLength": 10,
       "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
-      "description": "",
+      "description": "Cumulative number of route registrations and unregistrations emitted from the route-emitter as it reacts to changes to LRPs. Emitted every 30 seconds",
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -206,117 +206,12 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 5,
-        "w": 12,
-        "x": 12,
-        "y": 0
-      },
-      "hiddenSeries": false,
-      "id": 4,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.3.3",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "avg(firehose_value_metric_loggregator_doppler_subscriptions{environment=~\"$environment\",bosh_deployment=~\"${bosh_deployment}[-0-9a-f]*\"}) by(bosh_deployment, bosh_job_name, bosh_job_ip)",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "subscriptions",
-          "refId": "A",
-          "step": 4
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Doppler Subscriptions",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "description": "",
-      "editable": true,
-      "error": false,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 12,
+        "w": 24,
         "x": 0,
         "y": 5
       },
       "hiddenSeries": false,
-      "id": 5,
+      "id": 2,
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -324,12 +219,12 @@
         "max": false,
         "min": false,
         "rightSide": false,
-        "show": false,
+        "show": true,
         "total": false,
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
       "options": {
@@ -342,23 +237,41 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": false,
+      "stack": true,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(max(firehose_counter_event_loggregator_doppler_dropped_total{environment=~\"$environment\",bosh_deployment=~\"${bosh_deployment}[-0-9a-f]*\"}) by (bosh_job_id)) by(bosh_deployment, bosh_job_name, bosh_job_ip)",
-          "format": "time_series",
+          "expr": "sum(avg(firehose_counter_event_route_emitter_routes_registered_total{environment=~\"$environment\",bosh_deployment=~\"${bosh_deployment}[-0-9a-f]*\"}) by(bosh_deployment, bosh_job_name, bosh_job_ip))",
+          "hide": false,
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "Dropped Messages",
+          "legendFormat": "Registered",
           "refId": "A",
-          "step": 4
+          "step": 2
+        },
+        {
+          "expr": "sum(avg(firehose_counter_event_route_emitter_routes_synced_total{environment=~\"$environment\",bosh_deployment=~\"${bosh_deployment}[-0-9a-f]*\"}) by(bosh_deployment, bosh_job_name, bosh_job_ip))",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "Synched",
+          "refId": "B",
+          "step": 2
+        },
+        {
+          "expr": "sum(avg(firehose_counter_event_route_emitter_routes_unregistered_total{environment=~\"$environment\",bosh_deployment=~\"${bosh_deployment}[-0-9a-f]*\"}) by(bosh_deployment, bosh_job_name, bosh_job_ip))",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "Unregistered",
+          "refId": "C",
+          "step": 2
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Doppler Dropped Messages Count",
+      "title": "Routes",
       "tooltip": {
         "msResolution": false,
         "shared": true,
@@ -376,7 +289,7 @@
       },
       "yaxes": [
         {
-          "decimals": 0,
+          "$$hashKey": "object:302",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -385,6 +298,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:303",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -404,7 +318,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
-      "description": "",
+      "description": "Cumulative number of messages sent. Emitted every 30 seconds.",
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -416,13 +330,13 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 5
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 10
       },
       "hiddenSeries": false,
-      "id": 6,
+      "id": 1,
       "legend": {
         "alignAsTable": false,
         "avg": false,
@@ -452,19 +366,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(max(firehose_counter_event_loggregator_doppler_dropped_total{environment=~\"$environment\",bosh_deployment=~\"${bosh_deployment}[-0-9a-f]*\"}) by (bosh_job_ip))/sum(max(firehose_counter_event_loggregator_doppler_ingress_total{environment=~\"$environment\",bosh_deployment=~\"${bosh_deployment}[-0-9a-f]*\"}) by (bosh_job_ip))",
-          "format": "time_series",
+          "expr": "sum(avg(firehose_counter_event_route_emitter_http_route_nats_messages_emitted_total{environment=~\"$environment\",bosh_deployment=~\"${bosh_deployment}[-0-9a-f]*\"}) by(bosh_deployment, bosh_job_name, bosh_job_ip))",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "Dropped Messages (%)",
+          "legendFormat": "HTTP Route Nats Messages Emitted",
           "refId": "A",
-          "step": 4
+          "step": 2
+        },
+        {
+          "expr": "sum(avg(firehose_counter_event_route_emitter_internal_route_nats_messages_emitted_total{environment=~\"$environment\",bosh_deployment=~\"${bosh_deployment}[-0-9a-f]*\"}) by(bosh_deployment, bosh_job_name, bosh_job_ip))",
+          "interval": "",
+          "legendFormat": "Internal Route Nats Messages Emitted",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Doppler Dropped Messages Percentage",
+      "title": "Messages Emitted",
       "tooltip": {
         "msResolution": false,
         "shared": true,
@@ -482,7 +402,8 @@
       },
       "yaxes": [
         {
-          "format": "percentunit",
+          "$$hashKey": "object:383",
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -490,6 +411,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:384",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -509,7 +431,7 @@
   "style": "dark",
   "tags": [
     "cf",
-    "loggregator",
+    "router",
     "v2"
   ],
   "templating": {
@@ -518,7 +440,7 @@
         "allValue": null,
         "current": {},
         "datasource": "${DS_PROMETHEUS}",
-        "definition": "",
+        "definition": "label_values(firehose_counter_event_gorouter_requests_route_emitter_total, environment)",
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -526,7 +448,7 @@
         "multi": false,
         "name": "environment",
         "options": [],
-        "query": "label_values(firehose_counter_event_loggregator_doppler_ingress_total, environment)",
+        "query": "label_values(firehose_counter_event_gorouter_requests_route_emitter_total, environment)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -541,7 +463,7 @@
         "allValue": null,
         "current": {},
         "datasource": "${DS_PROMETHEUS}",
-        "definition": "",
+        "definition": "label_values(firehose_counter_event_gorouter_requests_route_emitter_total{environment=~\"$environment\"}, bosh_deployment)",
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -549,7 +471,7 @@
         "multi": false,
         "name": "bosh_deployment",
         "options": [],
-        "query": "label_values(firehose_counter_event_loggregator_doppler_ingress_total{environment=~\"$environment\"}, bosh_deployment)",
+        "query": "label_values(firehose_counter_event_gorouter_requests_route_emitter_total{environment=~\"$environment\"}, bosh_deployment)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -592,7 +514,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "CF: Doppler Server v2",
-  "uid": "cf_doppler_server_v2",
+  "title": "CF: Route Emitter v2",
+  "uid": "cf_route_emitter_v2",
   "version": 2
 }

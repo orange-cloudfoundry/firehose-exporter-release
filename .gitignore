@@ -13,3 +13,5 @@ releases/**/*.tgz
 *#
 #*
 *.tar.gz
+test.yml
+*.tgz
