@@ -27,4 +27,6 @@ builds:
     version: 7.0.2
   e1c0ac70-0b02-4151-5b51-a69ff46eb64d:
     version: 7.2.1
+  ef8aafea-636b-4545-7983-b690651a0da1:
+    version: 7.3.0
 format-version: "2"
