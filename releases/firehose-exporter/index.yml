@@ -3,6 +3,8 @@ builds:
     version: 7.1.0
   21fc423b-cc88-43c0-5992-ff9a73843a51:
     version: 7.2.0
+  27fd49e6-f137-4216-53a8-d587c860354e:
+    version: 7.3.2
   3f13a746-e60e-4cca-787e-888542f5490e:
     version: 7.0.5
   4340dafa-0764-44be-45a2-e66538e7761d:
